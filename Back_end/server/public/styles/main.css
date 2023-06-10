@@ -1,0 +1,67 @@
+body {
+  background-color: #dbe0e5;
+  margin: 0;
+}
+
+nav {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  padding: 0 20px;
+}
+
+._1O4jTk-dZ-VIxsCuYB6OR8 {
+  height: 32px;
+  padding: 8px 8px 8px 0;
+  width: 32px;
+}
+
+._1bWuGs_1sq4Pqy099x_yy- {
+  height: 18px;
+  margin-right: 20px;
+  width: auto;
+}
+
+._30BbATRhFv3V83DHNDjJAO,
+._2GyPfdsi-MbQFyHRECo9GO {
+  display: inline-flex;
+  align-items: center;
+}
+
+._1DeR7_QiQnu2UK0e2dDfYD {
+  display: flex;
+  align-items: center;
+  border: 1px solid #edeff1;
+  border-radius: 1.25em;
+  height: 40px;
+  background-color: #f6f7f8;
+  margin: 3px 0;
+  padding-left: 15px;
+  max-width: 656px;
+}
+
+.signup {
+  background-color: white;
+  color: #3477cc;
+  border: 1px solid #3477cc;
+  width: 120px;
+  height: 32px;
+  border-radius: 1.25em;
+  margin-right: 16px;
+}
+
+.login {
+  color: white;
+  background-color: #3477cc;
+  width: 120px;
+  height: 32px;
+  border: none;
+  border-radius: 1.25em;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+/*# sourceMappingURL=main.css.map */

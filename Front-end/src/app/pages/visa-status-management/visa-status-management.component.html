@@ -1,0 +1,107 @@
+<app-hr-navigation-bar></app-hr-navigation-bar>
+
+<div>
+  <h2>In Progress</h2>
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Name</th>
+        <th colspan="3">Work Authorization Title</th>
+        <th rowspan="2">action</th>
+        <th rowspan="2">next step</th>
+      </tr>
+
+      <tr>
+        <th>title</th>
+        <th>start and end date</th>
+        <th>remaining days</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let profile of inProgressProfiles">
+        <td>{{ profile.name }}</td>
+        <td>{{ profile.work_authorization.title }}</td>
+        <td>
+          {{ profile.work_authorization.start_date }}/{{
+            profile.work_authorization.end_date
+          }}
+        </td>
+        <td>{{ profile.work_authorization.days_remainding }}</td>
+        <td>
+          <div
+            *ngIf="
+              profile.work_authorization.OPT_status === 'pending';
+              else elseBlock
+            "
+          >
+            <a href="{{ profile.action.file }}" download> download file </a>
+            <br />
+            <button (click)="reject(profile.id)">Reject</button>
+            <button (click)="accept(profile.id)">Accept</button>
+          </div>
+          <ng-template #elseBlock
+            >pending for user response</ng-template
+          >
+        </td>
+
+        <td>
+          <button (click)="sendnoticefication(profile.id)">
+            send noticefication
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h2>All employees</h2>
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Name</th>
+        <th colspan="3">Work Authorization Title</th>
+        <th rowspan="2">action</th>
+        <th rowspan="2">next step</th>
+      </tr>
+
+      <tr>
+        <th>title</th>
+        <th>start and end date</th>
+        <th>remaining days</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let profile of allVisaStatus">
+        <td>{{ profile.name }}</td>
+        <td>{{ profile.work_authorization.title }}</td>
+        <td>
+          {{ profile.work_authorization.start_date }}/{{
+            profile.work_authorization.end_date
+          }}
+        </td>
+        <td>{{ profile.work_authorization.days_remainding }}</td>
+        <td>
+            <div *ngFor="let file of profile.action.file;let i = index">
+              <a  href="{{file}}" download> download file {{i+1}} </a>
+            </div>
+            
+      
+        </td>
+
+        <td>
+          none
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- <div *ngIf="isLoggedIn; else loggedOut">
+  Welcome back, friend.
+</div>
+
+<ng-template #loggedOut>
+  Please friend, login.
+</ng-template> -->

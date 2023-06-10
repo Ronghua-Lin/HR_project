@@ -1,0 +1,13 @@
+<form [formGroup]="form">
+  <fieldset>
+    <legend>User Signup</legend>
+    <input type="text" placeholder="Username" formControlName="username" />
+
+    <input type="password" placeholder="Password" formControlName="password" />
+
+    <input type="email" placeholder="email" formControlName="email" />
+
+    <button (click)="onSignup()" [disabled]="!form.valid">Sign Up</button>
+  </fieldset>
+</form>
+<a href="" routerLink="/login">Navigate to Login</a>

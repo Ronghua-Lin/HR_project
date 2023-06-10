@@ -1,0 +1,30 @@
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  margin: 2rem;
+}
+
+.discover {
+  height: 400px;
+  width: 300px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  max-width: 1200px;
+  margin: 0 150px;
+}
+
+.profile {
+  margin-top: 2rem;
+  background-color: white;
+  height: 800px;
+  width: 500px;
+}
+
+/*# sourceMappingURL=profile.css.map */

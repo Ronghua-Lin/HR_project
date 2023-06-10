@@ -1,0 +1,32 @@
+<h1>Summary View</h1>
+<div>
+ 
+  Search for candidates by first name:
+  <input type="text"   [ngModel]="search_info" (ngModelChange)="onSearch($event)" />
+</div>
+<table>
+  <thead>
+    <th>Icon</th>
+    <th>Name</th>
+    <th>SSN</th>
+    <th>Work Authorization Title</th>
+    <th>Phone Number</th>
+    <th>Email</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of filtered_profiles">
+      <td>
+        <img
+          src="{{ employee.profile_picture }}"
+          alt="Icon"
+          [ngStyle]="{ height: '20px', width: '20px' }"
+        />
+      </td>
+      <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+      <td>{{ employee.SSN }}</td>
+      <td>{{ employee.work_authorization_title }}</td>
+      <td>{{ employee.phone_number }}</td>
+      <td>{{ employee.email }}</td>
+    </tr>
+  </tbody>
+</table>

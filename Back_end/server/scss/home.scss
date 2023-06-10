@@ -1,0 +1,13 @@
+@import "partials/sidebar";
+
+main {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	max-width: 1200px;
+	margin: 0 150px;
+}
+.post {
+	height: 100px;
+	width: 500px;
+	background-color: white;
+}

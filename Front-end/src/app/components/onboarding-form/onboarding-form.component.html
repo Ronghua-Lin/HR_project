@@ -1,0 +1,277 @@
+
+<form id="onboarding_form" style="height: 1000px">
+
+    <legend>Onboarding Application</legend>
+    <div class="flex_container">
+      <img
+      src="{{ employee.profile_picture }}"
+      alt="Icon"
+      [ngStyle]="{ height: '20px', width: '20px' }"
+      />
+        <label>first name: {{employee.first_name}}</label>
+
+        <label>middle name: {{employee.middle_name}}</label><br />
+
+        <label>last name: {{employee.last_name}}</label><br />
+
+    </div>
+
+
+    <div class="flex_container">
+   
+        <label>current address: {{employee.address}}</label>
+        <label>phone number: {{employee.phone_number}}</label>
+    </div>
+
+
+    <div class="flex_container">
+      <label>Email: {{employee.email}}</label>
+      <label>SSN: {{employee.SSN}}</label>
+      <label>Date of Birth: {{employee.birthday}}</label>
+      <label>gender: {{employee.gender}}</label>
+    </div>
+
+    
+    <div class="flex_container">
+      <p style="flex-basis: 100%">Car information</p>
+      <label>make: {{employee.car_information?.make?employee.car_information.make:"none"}}</label>
+      <label>model: {{employee.car_information?.model?employee.car_information.model:"none"}}</label>
+      <label>color: {{employee.car_information?.color?employee.car_information.color:"none"}}</label>
+      <p style="flex-basis: 100%">Driver License</p>
+      <label>number: {{employee.driver_license?.number?employee.driver_license.number:"no number"}}</label>
+      <label>expiration date: {{employee.driver_license?.expiration_date?employee.driver_license.expiration_date:"no license"}}</label>
+      <label *ngIf="!employee.driver_license?.license_copy; else elseBlock">lisence copy: no license copy avaliable</label>
+      <ng-template #elseBlock>
+        lisence copy:
+        <a  href="{{employee.driver_license.license_copy}}" target="_blank" >check lisence copy</a>
+      </ng-template>
+      
+    </div>
+    <div class="flex_container">
+      <label>visa status: {{employee.visa_status}}</label>
+      <label>work authorization: {{employee.work_authorization?.title}}</label>
+      <label>start date: {{employee.work_authorization?.start_date}}</label>
+      <label>end date: {{employee.work_authorization?.end_date}}</label>
+      
+    </div>
+    <div class="flex_container">
+      <label>reference information: {{employee.reference? "":"none"}}</label>
+      <div *ngIf="employee.reference">
+        <label>first name: {{employee.reference?.first_name}}</label>
+        <label>last name: {{employee.reference?.last_name}}</label>
+      </div>
+    </div>
+    <div class="flex_container">
+      <p>emergency contact: {{employee.emergency_contact? "":"none"}}</p>
+      <div *ngIf="employee.emergency_contact" style="flex-basis: 100%;">
+        <label>first name: {{employee.emergency_contact?.first_name}}</label>
+        <label>last name: {{employee.emergency_contact?.last_name}}</label>
+      </div>
+    </div>
+<!-- 
+    <div class="flex_container">
+    <div>
+      <p>Are you a permanent_resident in US?*</p>
+      <input
+        type="radio"
+        name="permanent_resident"
+        [value]="true"
+        formControlName="permanent_resident"
+      />
+      yes
+      <input
+        type="radio"
+        name="permanent_resident"
+        [value]="false"
+        formControlName="permanent_resident"
+        checked
+      />
+      no
+      <div
+        *ngIf="form.get('permanent_resident')?.value === true"
+        class="flex_container"
+      >
+        <label>citizenship</label>
+        <select name="citizenship" formControlName="citizenship">
+          <option value="green_card">green card</option>
+          <option value="US_citizen">US citizen</option>
+        </select>
+      </div>
+      <div
+        *ngIf="form.get('permanent_resident')?.value === false"
+        class="flex_container"
+        formGroupName="work_authorization"
+      >
+        <div style="flex-basis:100%" >
+          <p>What is your work authorization?*</p>
+
+          <select
+            name="work_authorization"
+            formControlName="title"
+          >
+            <option value="H1-B">H1-B</option>
+            <option value="L2">L2</option>
+            <option value="F1(CPT/OPT)">F1(CPT/OPT)</option>
+            <option value="H4">H4</option>
+            <option value="others">others</option>
+          </select>
+          <input
+            *ngIf="form.get('work_authorization')?.get('title')?.value  === 'others'"
+            type="text"
+            name="others"
+            formControlName="others_visa"
+          />
+          <input
+          *ngIf="form.get('work_authorization')?.get('title')?.value  === 'F1(CPT/OPT)'"
+          type="file"
+          name="work_authorization_document"
+          formControlName="work_authorization_document"
+          (change)="onFileChange($event)"
+        />
+        </div>
+        <div>
+          <label>
+            start date:
+            <input type="date" formControlName="start_date" />
+          </label>
+          
+          <label>
+            end date:
+            <input type="date" formControlName="end_date" />
+          </label>
+          
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>Do you have a driver license?</p>
+      <input
+        type="radio"
+        name="driver_license"
+        [value]="true"
+        formControlName="driver_license"
+        checked
+      />
+      yes
+      <input
+        type="radio"
+        name="driver_license"
+        [value]="false"
+        formControlName="driver_license"
+        checked
+      />
+      no
+      <div
+        *ngIf="form.get('driver_license')?.value === true"
+        class="flex_container"
+        formGroupName="driver_license_information"
+      >
+        <div>
+          <label>License Number</label><br />
+          <input type="text" formControlName="number" />
+        </div>
+        <div>
+          <label>expiration date</label><br />
+          <input type="date" formControlName="expiration_date" />
+        </div>
+
+        <div>
+          <label>license copy</label><br />
+          <input
+            type="file"
+            name="license_copy"
+            formControlName="license_copy"
+            (change)="onFileChange($event)"
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <p>Do you have a reference?</p>
+      <input type="radio" [value]="true" formControlName="reference" />
+      yes
+      <input
+        type="radio"
+        [value]="false"
+        formControlName="reference"
+        checked
+      />
+      no
+      <div
+        *ngIf="form.get('reference')?.value === true"
+        class="flex_container"
+        formGroupName="reference_information"
+      >
+        <div>
+          <label>first name*</label>
+          <br />
+          <input type="text" formControlName="first_name" />
+        </div>
+
+        <div>
+          <label>middle name</label><br />
+          <input type="text" formControlName="middle_name" />
+        </div>
+
+        <div>
+          <label>last name*</label><br />
+          <input type="text" formControlName="last_name" />
+        </div>
+
+        <div>
+          <label>phone number*</label>
+          <br />
+          <input type="number" formControlName="phone_number" />
+        </div>
+
+        <div>
+          <label>email*</label><br />
+          <input type="text" formControlName="email" />
+        </div>
+
+        <div>
+          <label>relationship*</label><br />
+          <input type="text" formControlName="relationship" />
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex_container" formGroupName="emergency_contact">
+        <p style="flex-basis: 100%">Emergency contact*</p>
+        <div>
+          <label>first name*</label>
+          <br />
+          <input type="text" formControlName="first_name" />
+        </div>
+
+        <div>
+          <label>middle name</label><br />
+          <input type="text" formControlName="middle_name" />
+        </div>
+
+        <div>
+          <label>last name*</label><br />
+          <input type="text" formControlName="last_name" />
+        </div>
+
+        <div>
+          <label>phone number*</label>
+          <br />
+          <input type="number" formControlName="phone_number" />
+        </div>
+
+        <div>
+          <label>email*</label><br />
+          <input type="text" formControlName="email" />
+        </div>
+
+        <div>
+          <label>relationship*</label><br />
+          <input type="text" formControlName="relationship" />
+        </div>
+      </div>
+    </div>
+  -->
+</form> 

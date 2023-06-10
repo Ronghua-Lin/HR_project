@@ -1,0 +1,70 @@
+<app-hr-navigation-bar></app-hr-navigation-bar>
+<div>
+  <h2>new employee sign up</h2>
+  <input type="text" placeholder="Email" [(ngModel)]="email" />
+
+  <button (click)="onSendToken()" [disabled]="!email">Send token</button>
+</div>
+
+<div>
+  <h2>Onboarding Application review</h2>
+  <div>
+    <h2>Pending</h2>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>View Application</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let application of onboarding_applicaitons.pending">
+          <td>{{application.name}}</td>
+          <td>{{application.email}}</td>
+          <td><p (click)="viewApplication(application.id)" [ngClass]="'viewApplication'">view application</p>
+          <button (click)="onApprove(application.id)">approve</button><button (click)="()=>console.log('heae')">reject</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h2>Rejected</h2>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>View Application</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let application of onboarding_applicaitons.rejected">
+          <td>{{application.name}}</td>
+          <td>{{application.email}}</td>
+          <td><p (click)="viewApplication(application.id)" [ngClass]="'viewApplication'">view application</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h2>Approved</h2>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>View Application</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let application of onboarding_applicaitons.approved">
+          <td>{{application.name}}</td>
+          <td>{{application.email}}</td>
+          <td><p (click)="viewApplication(application.id)" [ngClass]="'viewApplication'">view application</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ol>
+    
+  </ol>
+</div>
+

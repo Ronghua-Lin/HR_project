@@ -1,0 +1,11 @@
+<form [formGroup]="form">
+  <fieldset>
+    <legend>User Login</legend>
+    <input type="text" placeholder="Username" formControlName="username" />
+
+    <input type="password" placeholder="Password" formControlName="password" />
+
+    <button (click)="onLogin()" [disabled]="!form.valid">Login in</button>
+  </fieldset>
+</form>
+
